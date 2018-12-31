@@ -27,7 +27,7 @@ Technical Task Details are as below:
 # Project Arch 
 The project architeture is as follow: 
 
-[![][Arch]][] 
+![][Arch]
 
 
 
