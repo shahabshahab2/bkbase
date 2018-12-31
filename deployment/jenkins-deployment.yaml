@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+  namespace: backbase
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+    #The maximum number of pods that can be scheduled above the desired number of pods. 
+      maxSurge: 1
+    #The maximum number of pods that can be unavailable during the update. Value can be an absolute number
+      maxUnavailable: 1
+    #Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: jenkins
+    spec:
+      containers:
+        - name: jenkins-containers
+        #Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, 
+        #it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value
+          resources:
+            requests:
+            # tow hundred millicpu
+              cpu: "10m"
+              memory: "20M"
+        #Number of port to expose on the pod's IP address       
+          image: shahabshahab2/backbase_jenkins:2.7.4
+          env:
+            - name: JAVA_OPTS
+              value: -Djenkins.install.runSetupWizard=false
+          ports:
+            - name: http-port
+              containerPort: 9090
+            - name: jnlp-port
+              containerPort: 50000
+          volumeMounts:
+          # Pod volumes to mount into the container's filesystem.
+            - name: jenkins-home
+              mountPath: /var/jenkins_home
+      volumes:
+        - name: jenkins-home
+        #emptyDir: EmptyDir represents a temporary directory that shares a pod's lifetime. 
+          emptyDir: {}
+          #TODO add presistant storage

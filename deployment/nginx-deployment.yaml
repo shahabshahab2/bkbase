@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  nginx-deployment
+  namespace: backbase
+  labels:
+    name:  nginx-deployment
+spec:
+  replicas: 3
+  strategy:
+    rollingUpdate:
+    #The maximum number of pods that can be scheduled above the desired number of pods. 
+      maxSurge: 1
+    #The maximum number of pods that can be unavailable during the update. Value can be an absolute number
+      maxUnavailable: 1
+    #Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate
+    type: RollingUpdate
+  template:
+    metadata:
+        labels: 
+          name: nginx
+    spec:
+      containers:
+      - image: shahabshahab2/backbase_nginx:1
+        name:  nginx-container
+        #Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, 
+        #it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "55M"
+        ports:
+        #Number of port to expose on the pod's IP address
+        - containerPort:  8080
+          name:  nginx-web-port
+      restartPolicy: Always
+
+
