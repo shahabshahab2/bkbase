@@ -6,7 +6,6 @@ def env = System.getenv()
 
 // Change location configuration for admin address and Jenkins URL.
 // Currently this will override settings changed via Jenkins UI.
-// TODO: Investigate whether EMail is required at first setup and URL can be changed later.
 def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
 jenkinsLocationConfiguration.setAdminAddress(env.JENKINS_EMAIL)
 jenkinsLocationConfiguration.setUrl(env.JENKINS_URL)

@@ -97,8 +97,7 @@ To run the above app.
    Verify if namespace with name backbase is created by running kubectl get ns. 
    Verify if deployment has been created by running kubectl get deploy -n backbase and has aproprate "Available" value.
    Verify if service has been created by running kubectl get svc -n backbase.
-
-# TODO add jenkins access   
+ 
    b) Now run your service. First check IP of your minikube (command : minikube ip) as we have used nodeport the service will run on IP of minikube 
    with port we forwared in service i.e. 
       
