@@ -70,7 +70,7 @@ Some notes about Jenkins :
 
    #To get the service url
    
-   e) minikube service -n backbase jenkins —url
+   e) minikube service -n backbase jenkins-expose-service —-url
    
    # User and pass for jenkins 
 
