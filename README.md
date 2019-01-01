@@ -105,11 +105,13 @@ To run the above app.
    c) One other way to view deployed service is to expose them manually i.e.
       
       for nginx:
+
      $ kubectl expose deploy/nginx-deployment --type=NodePort --target-port=8080 -n backbase --name  "nginx-expose-service"
      $ minikube service nginx-expose-service -n backbase --url 
       http://192.168.99.100:30859
 
       for tomcat:
+      
      $ kubectl expose deploy/tomcat-deployment --type=NodePort --target-port=8090 -n backbase --name    "tomcat-expose-service"
      $ minikube service tomcat-expose-service -n backbase --url
        http://192.168.99.100:31449
