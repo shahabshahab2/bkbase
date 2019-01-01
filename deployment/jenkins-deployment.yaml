@@ -45,4 +45,5 @@ spec:
         - name: jenkins-home
         #emptyDir: EmptyDir represents a temporary directory that shares a pod's lifetime. 
           emptyDir: {}
-          #TODO add presistant storage
+  
+          

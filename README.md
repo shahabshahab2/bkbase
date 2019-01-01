@@ -10,7 +10,7 @@ Docker image is created and pushed to dockerhub
 
 Dockerfile code for each module is in it's relative folder.
 
-Kubernetes code is in deploymnet folder. Kubernetes deployment has been created with replica set of 3 for nginx andnreplica set of 1 for tomcat(v8) and replica set of 1 for jenkins . In services app has been exposed with Nodeport to access from outside the cluster. To get the service first get the minikube IP and then run it with port exposed i.e. 8080.
+Kubernetes code is in deployment folder. Kubernetes deployment has been created with replica set of 3 for nginx andnreplica set of 1 for tomcat(v8) and replica set of 1 for Jenkins . In services app has been exposed with Nodeport to access from outside the cluster. To get the service first get the minikube IP and then run it with port exposed i.e. 8080.
 
 Technical Task Details are as below:
 - Based on minikube
@@ -25,7 +25,7 @@ Technical Task Details are as below:
 - Archive everything into a zip or tar.gz, and then send it to me (or send me a github/bitbucket link)
 
 # Project Arch 
-The project architeture is as follow: 
+The project architecture is as follow: 
 
 ![][Arch]
 
@@ -48,7 +48,7 @@ The project architeture is as follow:
    
    c) docker push shahabshahab2/backbase_nginx:1
 
-the same for tomcat and jenkins
+the same for tomcat and Jenkins
 
 2) Kubernetes
    
@@ -58,7 +58,7 @@ the same for tomcat and jenkins
 
    #To get the deployments of app  
    
-   b) kubectl get deploymnets -n backbase -o wide
+   b) kubectl get deployments -n backbase -o wide
  
    #To get the pods of app 
    
@@ -81,10 +81,10 @@ Some notes about Jenkins :
 
    #Jenkins plugins
    
-   g) The setup wizard skiped by setting -Djenkins.install.runSetupWizard=false and some instace plugins loaded by \
+   g) The setup wizard skipped by setting -Djenkins.install.runSetupWizard=false and some instance plugins loaded by \
      importing plugins.txt into install-plugins.sh script.
-   h) The dummy job is imported while creating the image in the Docker file. As jenkins is runnig by jenkins user, ownership of the \
-      dummy jobs should changed to jenkins as it is getting copy ( --chown=jenkins:jenkins )
+   h) The dummy job is imported while creating the image in the Docker file. As Jenkins is running by Jenkins user, ownership of the \
+      dummy jobs should changed to Jenkins as it is getting copy ( --chown=jenkins:jenkins )
 
 
 To run the above app. 
@@ -95,11 +95,11 @@ To run the above app.
   
    a) kubectl apply -f deployment/namespace.yaml &&  kubectl apply -f deployment/
    Verify if namespace with name backbase is created by running kubectl get ns. 
-   Verify if deployment has been created by running kubectl get deploy -n backbase and has aproprate "Available" value.
+   Verify if deployment has been created by running kubectl get deploy -n backbase and has appropriate "Available" value.
    Verify if service has been created by running kubectl get svc -n backbase.
  
    b) Now run your service. First check IP of your minikube (command : minikube ip) as we have used nodeport the service will run on IP of minikube 
-   with port we forwared in service i.e. 
+   with port we forward in service i.e. 
       
      $ minikube service jenkins-expose-service -n backbase --url
       http://192.168.99.100:32752
