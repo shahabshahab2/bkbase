@@ -20,9 +20,6 @@ Technical Task Details are as below:
 - Deploy sample.war to tomcat deployment (use this: https://tomcat.apache.org/tomcat-8.0-doc/appdev/sample/ )
 - Deploy a jenkins pod (1 replica)
 - Configure a static "dummy" job in jenkins
-- Submit the project as a set of yaml manifests, Dockerfiles, bash scripts, xml files, and anything else you deem appropriate
-- Include a simple/short README file that tells me how to operate the project
-- Archive everything into a zip or tar.gz, and then send it to me (or send me a github/bitbucket link)
 
 # Project Arch 
 The project architecture is as follow: 
