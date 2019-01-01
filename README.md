@@ -1,6 +1,6 @@
 
 
-# About
+# About ASG2
 This simple DevOps task. Below are the instructions to run the task.
 
 Docker image is created and pushed to dockerhub 
