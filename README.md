@@ -4,6 +4,7 @@
 This simple DevOps task. Below are the instructions to run the task.
 
 Docker image is created and pushed to dockerhub 
+
     docker.io/shahabshahab2/shahabshahab2/backbase_tomcat:8
     docker.io/shahabshahab2/shahabshahab2/backbase_nginx:1
     docker.io/shahabshahab2/shahabshahab2/backbase_jenkins:2.7.4
