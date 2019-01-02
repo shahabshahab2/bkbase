@@ -32,17 +32,17 @@ The project architecture is as follow:
 
 1) Docker Image. 
 
-   #To build the docker image from dockerfile 
+   **To build the docker image from dockerfile**
    
    a) ``cd nginx``
 
    b) ``docker build  shahabshahab2/backbase_nginx:1 .``
   
-   #To run the created docker image 
+   **To run the created docker image** 
    
    b) ``docker run -it -p 8080:8080 shahabshahab2/backbase_nginx:1``
 
-   #To push the image from docker hub 
+   **To push the image from docker hub**
    
    c) ``docker push shahabshahab2/backbase_nginx:1``
 
@@ -50,38 +50,38 @@ the same for tomcat and Jenkins
 
 2) Kubernetes
    
-   #To deploy   
+   **To deploy**   
    
    a) ``kubectl apply -f deployment/``
 
-   #To get the deployments of app  
+   **To get the deployments of app** 
    
    b) ``kubectl get deployments -n backbase -o wide``
  
-   #To get the pods of app 
+   **To get the pods of app**
    
    c)`` kubectl get po -n backbase -o wide``
    
-   #To get the services of app 
+   **To get the services of app** 
    
    d) ``kubectl get svc -n backbase -o wide``
     ``  minikube service -n backbase list``
 
 Some notes about Jenkins :
 
-   #To get the service url
+   **To get the service url**
    
    e) ``minikube service -n backbase jenkins-expose-service —-url``
    
-   # User and pass for jenkins 
+   **User and pass for jenkins** 
 
    f) The admin user and password is set to admin/admin by default-user.groovy in creating the docker image.
 
-   #Jenkins plugins
+   # Jenkins's Tips
    
-   g) The setup wizard skipped by setting -Djenkins.install.runSetupWizard=false and some instance plugins loaded by \
-     importing plugins.txt into install-plugins.sh script.
-   h) The dummy job is imported while creating the image in the Docker file. As Jenkins is running by Jenkins user, ownership of the dummy jobs should changed to Jenkins as it is getting copy ( --chown=jenkins:jenkins )
+   g) The setup wizard skipped by setting ``-Djenkins.install.runSetupWizard=false`` and some instance plugins loaded by \
+     importing plugins.txt into ``install-plugins.sh`` script.
+   h) The dummy job is imported while creating the image in the Docker file. As Jenkins is running by *jenkins* user, ownership of the dummy jobs should changed to Jenkins as it is getting copy ( ``--chown=jenkins:jenkins`` )
 
 
 To run the above app. 
@@ -94,11 +94,11 @@ run:
 
     $ kubectl apply -f deployment/namespace.yaml &&  kubectl apply -f deployment/
   
-   Verify if namespace with name backbase is created by running kubectl get ns. 
+   Verify if namespace with name backbase is created by running ``kubectl get ns``. 
    Verify if deployment has been created by running ``kubectl get deploy -n backbase``and has appropriate "Available" value.
    Verify if service has been created by running ``kubectl get svc -n backbase*``
  
-   b) Now run your service. First check IP of your minikube (command : minikube ip) as we have used nodeport the service will
+   b) Now run your service. First check IP of your minikube (``command : minikube ip``) as we have used nodeport the service will
    
   run on IP of minikube  i.e. 
       
