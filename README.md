@@ -75,11 +75,11 @@ Some notes about Jenkins :
    
    **User and pass for jenkins** 
 
-   f) The admin user and password is set to admin/admin by default-user.groovy in creating the docker image.
+   f) The admin user and password is set to ``admin/admin`` by ``default-user.groovy`` in creating the docker image.
 
    # Jenkins's Tips
    
-   g) The setup wizard skipped by setting ``-Djenkins.install.runSetupWizard=false`` and some instance plugins loaded by \
+   g) The setup wizard skipped by setting ``-Djenkins.install.runSetupWizard=false`` and some instance plugins loaded by 
      importing plugins.txt into ``install-plugins.sh`` script.
    h) The dummy job is imported while creating the image in the Docker file. As Jenkins is running by *jenkins* user, ownership of the dummy jobs should changed to Jenkins as it is getting copy ( ``--chown=jenkins:jenkins`` )
 
