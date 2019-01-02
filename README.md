@@ -34,17 +34,17 @@ The project architecture is as follow:
 
    #To build the docker image from dockerfile 
    
-   a) cd nginx
+   a)`` cd nginx``
 
-   b) docker build  shahabshahab2/backbase_nginx:1 .
+   b) ``docker build  shahabshahab2/backbase_nginx:1 .``
   
    #To run the created docker image 
    
-   b) docker run -it -p 8080:8080 shahabshahab2/backbase_nginx:1
+   b) ``docker run -it -p 8080:8080 shahabshahab2/backbase_nginx:1``
 
    #To push the image from docker hub 
    
-   c) docker push shahabshahab2/backbase_nginx:1
+   c) ``docker push shahabshahab2/backbase_nginx:1``
 
 the same for tomcat and Jenkins
 
@@ -52,7 +52,7 @@ the same for tomcat and Jenkins
    
    #To deploy   
    
-   a) kubectl apply -f deployment/
+   a) ``kubectl apply -f deployment/``
 
    #To get the deployments of app  
    
@@ -71,7 +71,7 @@ Some notes about Jenkins :
 
    #To get the service url
    
-   e) minikube service -n backbase jenkins-expose-service —-url
+   e) ``minikube service -n backbase jenkins-expose-service —-url``
    
    # User and pass for jenkins 
 
@@ -81,40 +81,45 @@ Some notes about Jenkins :
    
    g) The setup wizard skipped by setting -Djenkins.install.runSetupWizard=false and some instance plugins loaded by \
      importing plugins.txt into install-plugins.sh script.
-   h) The dummy job is imported while creating the image in the Docker file. As Jenkins is running by Jenkins user, ownership of the \
-      dummy jobs should changed to Jenkins as it is getting copy ( --chown=jenkins:jenkins )
+   h) The dummy job is imported while creating the image in the Docker file. As Jenkins is running by Jenkins user, ownership of the dummy jobs should changed to Jenkins as it is getting copy ( --chown=jenkins:jenkins )
 
 
 To run the above app. 
 
 1) First clone the repository. 
 2) Start the minikube cluster with command minikube start.
-3) Now for kubernetes first create namespace and the deployment and services. 
+3) Now for kubernetes first create namespace and the deployment and services: 
+
+run:
+
+    $ kubectl apply -f deployment/namespace.yaml &&  kubectl apply -f deployment/
   
-   a) kubectl apply -f deployment/namespace.yaml &&  kubectl apply -f deployment/
    Verify if namespace with name backbase is created by running kubectl get ns. 
-   Verify if deployment has been created by running kubectl get deploy -n backbase and has appropriate "Available" value.
-   Verify if service has been created by running kubectl get svc -n backbase.
+   Verify if deployment has been created by running *kubectl get deploy -n backbase* and has appropriate "Available" value.
+   Verify if service has been created by running *kubectl get svc -n backbase*
  
-   b) Now run your service. First check IP of your minikube (command : minikube ip) as we have used nodeport the service will run on IP of minikube 
-   with port we forward in service i.e. 
+   b) Now run your service. First check IP of your minikube (command : minikube ip) as we have used nodeport the service will
+   
+  run on IP of minikube  i.e. 
       
      $ minikube service jenkins-expose-service -n backbase --url
+      
       http://192.168.99.100:32752
 
    c) One other way to view deployed service is to expose them manually i.e.
-      
-      for nginx:
+for nginx:
 
      $ kubectl expose deploy/nginx-deployment --type=NodePort --target-port=8080 -n backbase --name  "nginx-expose-service"
      $ minikube service nginx-expose-service -n backbase --url 
-      http://192.168.99.100:30859
+     
+     http://192.168.99.100:30859
 
-      for tomcat:
+for tomcat:
       
      $ kubectl expose deploy/tomcat-deployment --type=NodePort --target-port=8090 -n backbase --name    "tomcat-expose-service"
      $ minikube service tomcat-expose-service -n backbase --url
-       http://192.168.99.100:31449
+      
+      http://192.168.99.100:31449
 
 
    
