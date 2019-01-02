@@ -56,16 +56,16 @@ the same for tomcat and Jenkins
 
    #To get the deployments of app  
    
-   b) kubectl get deployments -n backbase -o wide
+   b) ``kubectl get deployments -n backbase -o wide``
  
    #To get the pods of app 
    
-   c) kubectl get po -n backbase -o wide
+   c)`` kubectl get po -n backbase -o wide``
    
    #To get the services of app 
    
-   d) kubectl get svc -n backbase -o wide
-      minikube service -n backbase list
+   d) ``kubectl get svc -n backbase -o wide``
+    ``  minikube service -n backbase list``
 
 Some notes about Jenkins :
 
@@ -95,8 +95,8 @@ run:
     $ kubectl apply -f deployment/namespace.yaml &&  kubectl apply -f deployment/
   
    Verify if namespace with name backbase is created by running kubectl get ns. 
-   Verify if deployment has been created by running *kubectl get deploy -n backbase* and has appropriate "Available" value.
-   Verify if service has been created by running *kubectl get svc -n backbase*
+   Verify if deployment has been created by running ``kubectl get deploy -n backbase``and has appropriate "Available" value.
+   Verify if service has been created by running ``kubectl get svc -n backbase*``
  
    b) Now run your service. First check IP of your minikube (command : minikube ip) as we have used nodeport the service will
    
