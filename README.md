@@ -34,7 +34,7 @@ The project architecture is as follow:
 
    #To build the docker image from dockerfile 
    
-   a)`` cd nginx``
+   a) ``cd nginx``
 
    b) ``docker build  shahabshahab2/backbase_nginx:1 .``
   
